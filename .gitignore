@@ -1,0 +1,6 @@
+/week7
+.DS_Store
+*~
+*.gz
+*.pyc
+__pycache__/
