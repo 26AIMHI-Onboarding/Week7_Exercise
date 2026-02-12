@@ -54,11 +54,11 @@ for i in range(20):
     
     # [빈칸 1] i번째 은닉 뉴런에 해당하는 가중치 추출
     # Hint: weights는 (784, 50) 2차원 배열입니다. 모든 행(:)의 i번째 열을 가져오세요.
-    w = ### 빈칸 1 ###
+    w = weights[:, i]
     
     # [빈칸 2] 1차원 배열(784개)을 2차원 이미지(28x28)로 변환
     # Hint: 그림을 그리려면 가로x세로 형태여야 합니다. numpy의 reshape 함수를 사용하세요.
-    w_img = w.### 빈칸 2 ###(28, 28)
+    w_img = w.reshape(28, 28)
     
     plt.imshow(w_img, cmap='gray')
     

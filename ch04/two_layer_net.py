@@ -20,16 +20,16 @@ class TwoLayerNet:
     
         # [빈칸 1] 입력 데이터(x)와 1층 가중치(W1)의 내적에 편향(b1)을 더함
         # Hint: numpy의 dot 함수 사용
-        a1 = ### 빈칸 1 ###
+        a1 = np.dot(x, W1) + b1
         
         # [빈칸 2] 1층의 출력을 활성화 함수(Sigmoid)에 통과시킴
-        z1 = ### 빈칸 2 ###
+        z1 = sigmoid(a1)
         
         # [빈칸 3] 1층의 출력(z1)과 2층 가중치(W2)의 내적에 편향(b2)을 더함
-        a2 = ### 빈칸 3 ### 
+        a2 = np.dot(z1, W2) + b2
         
         # [빈칸 4] 최종 출력을 확률로 변환 (Softmax)
-        y = ### 빈칸 4 ### 
+        y = softmax(a2)
         
         return y
         
@@ -38,14 +38,14 @@ class TwoLayerNet:
         y = self.predict(x)
         
         # [빈칸 5] 예측값(y)과 정답(t) 사이의 교차 엔트로피 오차 계산
-        return ### 빈칸 5 ###
+        return cross_entropy_error(y, t)
     
     def accuracy(self, x, t):
         y = self.predict(x)
         
         # [빈칸 6] 확률(y)과 정답(t)에서 가장 값이 큰 인덱스(axis=1)를 가져옴
         # Hint: numpy의 argmax 함수 사용
-        y = ### 빈칸 6 ###
+        y = np.argmax(y, axis=1)
         t = np.argmax(t, axis=1)
         
         accuracy = np.sum(y == t) / float(x.shape[0])
@@ -121,13 +121,13 @@ if __name__ == '__main__':
         
         # [빈칸 7] 기울기 계산
         # Hint: network의 gradient 메서드를 호출하여 기울기를 구하세요.
-        grad = ### 빈칸 7 ###
+        grad = network.gradient(x_batch, t_batch)
         
         # [빈칸 8] 매개변수(가중치) 갱신 (SGD)
         # Hint: 학습률(learning_rate)과 기울기(grad)를 사용하여 params를 업데이트합니다.
         # W1, b1, W2, b2 모든 키에 대해 반복합니다.
         for key in ('W1', 'b1', 'W2', 'b2'):
-            network.params[key] -= ### 빈칸 8 ###
+            network.params[key] -= learning_rate * grad[key]
             
         # 학습 경과 기록
         if i % 100 == 0:

@@ -38,11 +38,11 @@ for i in range(20):
     
     # [빈칸 1] i번째 은닉 뉴런의 가중치 추출
     # Hint: W1은 2차원 배열입니다. 모든 행(:)의 i번째 열을 가져와야 합니다.
-    weight = ### 빈칸 1 ###
+    weight = W1[:, i]
     
     # [빈칸 2] 1줄로 되어있는 가중치를 이미지 모양(28x28)으로 변형
     # Hint: 입력 데이터가 원래 28x28 픽셀이었음을 기억하세요. 
-    weight_img = weight.### 빈칸 2 ###(28, 28)
+    weight_img = weight.reshape(28, 28)
     
     plt.imshow(weight_img, cmap='gray')
     
